@@ -1,10 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { PatologiButton, TerminologiButton } from "@/components/Button";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <div className="bg-hero h-screen">
+      <Head>
+        <title>Musterm</title>
+      </Head>
       <Navbar />
       <div className="flex justify-center items-center h-3/4">
         <div className="flex flex-row-reverse justify-center items-center gap-36 h-1/2 ">

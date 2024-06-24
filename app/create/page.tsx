@@ -1,4 +1,5 @@
 import FormCreate from '@/components/FormCreate'
+import Head from 'next/head'
 import React from 'react'
 
 
@@ -6,7 +7,10 @@ import React from 'react'
 const CreateData = () => {
   return (
     <div className='max-w-md mx-auto mt-5'>
-        <h1 className='text-2xl text-center mb-2'>Tambah Kontak Baru</h1>
+        <Head>
+        <title>Tambah Terminologi</title>
+      </Head>
+        <h1 className='text-2xl text-center mb-2'>Tambah Data Terminologi</h1>
         <FormCreate/>
     </div>
   )
