@@ -1,4 +1,8 @@
+"use client"
+
+import clsx from "clsx";
 import Link from "next/link";
+import { useFormStatus } from "react-dom";
 
 export const TerminologiButton = () => {
   return (
@@ -25,3 +29,20 @@ export const PatologiButton = () => {
     </Link>
   );
 };
+
+
+export const SubmitButton = ({label}: {label: string})=>{
+    const {pending} = useFormStatus()
+    const ClassName = clsx("bg-blue-700 text-white hover:bg-blue-800 px-5 py-[9px] rounded-sm text-sm w-full text-center",{
+        "opacity-50 cursor-progress":pending
+    })
+    return (
+        <button className={ClassName} disabled={pending}>
+            {label === "save" ? (
+                <span>{pending ? "Saving..." : "save"} </span>
+            ):(
+                <span>{pending ? "Updating" : "save"}</span>  
+            )}
+        </button>
+    )
+}
