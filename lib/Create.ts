@@ -38,7 +38,7 @@ export const TerminologiCreate = async (prevState: any, formData: FormData) => {
         message: "Gagal Untuk menambahkan Data" };
     }
   
-    revalidatePath("/create");
+    // revalidatePath("/create");
     // redirect("/create");
     
   };
