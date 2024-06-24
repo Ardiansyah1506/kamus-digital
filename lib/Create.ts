@@ -29,13 +29,16 @@ export const TerminologiCreate = async (prevState: any, formData: FormData) => {
           kategori: validatedFields.data.kategori,
         },
       });
+      return {
+        message: "Data berhasil ditambahkan!",
+      };
     } catch (error) {
         console.error("Database error:", error);
       return {
         message: "Gagal Untuk menambahkan Data" };
     }
   
-    revalidatePath("/");
-    redirect("/");
-  
+    revalidatePath("/create");
+    // redirect("/create");
+    
   };
