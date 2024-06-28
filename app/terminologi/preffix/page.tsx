@@ -1,9 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
-import { Card } from "@/components/terminologi/card";
-import { TablePreffix } from "@/components/terminologi/table";
-import { IoIosArrowRoundDown, IoIosArrowRoundForward } from "react-icons/io";
-const page = () => {
+import Pagination from "@/components/pagination";
+import { Table } from "@/components/terminologi/table";
+import { IoIosArrowRoundForward } from "react-icons/io";
+
+
+const page = ({searchParams}: {searchParams?:{
+    query?:string;
+    page?:string;
+  }}) => {
+
+    const query = searchParams?.query || "";
+    const currentPage = Number(searchParams?.page) || 1;
+  
   return (
     <div className="min-h-screen bg-hero">
       <Navbar />
@@ -14,7 +23,7 @@ const page = () => {
         <Search />
         <div className="flex flex-col w-full justify-center items-center">
           <div className="flex justify-between items-center w-1/2">
-            <h3 className="text-white font-bold text-xl">Preffix</h3>
+            <h3 className="text-white font-bold text-xl">Root</h3>
             <div className="flex gap-4 justify-center items-center">
               <p className="text-white">Semua</p>
               <div className="bg-white rounded-xl">
@@ -22,7 +31,7 @@ const page = () => {
               </div>
             </div>
           </div>
-         <TablePreffix/>
+         <Table query={query} currentPage={currentPage} kategori="preffix"/>
         </div>
       </div>
     </div>

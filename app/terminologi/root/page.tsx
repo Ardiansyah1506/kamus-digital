@@ -1,9 +1,18 @@
 import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
-import { Card } from "@/components/terminologi/card";
-import { TableRoot } from "@/components/terminologi/table";
-import { IoIosArrowRoundDown, IoIosArrowRoundForward } from "react-icons/io";
-const page = () => {
+import Pagination from "@/components/pagination";
+import { Table } from "@/components/terminologi/table";
+import { IoIosArrowRoundForward } from "react-icons/io";
+
+
+const page = ({searchParams}: {searchParams?:{
+    query?:string;
+    page?:string;
+  }}) => {
+
+    const query = searchParams?.query || "";
+    const currentPage = Number(searchParams?.page) || 1;
+  
   return (
     <div className="min-h-screen bg-hero">
       <Navbar />
@@ -22,7 +31,7 @@ const page = () => {
               </div>
             </div>
           </div>
-         <TableRoot/>
+         <Table query={query} currentPage={currentPage} kategori="root"/>
         </div>
       </div>
     </div>
