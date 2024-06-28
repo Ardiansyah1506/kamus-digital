@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
-import Pagination from "@/components/pagination";
 import { Table } from "@/components/terminologi/table";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
