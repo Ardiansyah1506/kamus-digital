@@ -25,7 +25,7 @@ const page = async ({searchParams}: {searchParams?:{
         <Search />
         <div className="flex flex-col w-full justify-center items-center">
           <div className="flex justify-between items-center w-1/2">
-            <h3 className="text-white font-bold text-xl">Root</h3>
+            <h3 className="text-white font-bold text-xl">Suffix</h3>
             <div className="flex gap-4 justify-center items-center">
               <p className="text-white">Semua</p>
               <div className="bg-white rounded-xl">
