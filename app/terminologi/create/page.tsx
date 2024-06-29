@@ -1,4 +1,4 @@
-import FormCreate from '@/components/FormCreate'
+import FormCreate from '@/components/terminologi/FormCreate'
 import Head from 'next/head'
 import React from 'react'
 

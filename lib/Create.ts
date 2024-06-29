@@ -42,3 +42,40 @@ export const TerminologiCreate = async (prevState: any, formData: FormData) => {
     // redirect("/create");
     
   };
+const PatologiSchema = z.object({
+    nama: z.string().min(1),
+    deskripsi: z.string().min(1),
+    foto: z.string().min(1),
+  });
+  export const PatologiCreate = async (prevState: any, formData: FormData) => {
+    // Assuming PatologiSchema is defined and imported for validation
+    const validatedFields = PatologiSchema.safeParse(
+      Object.fromEntries(formData.entries())
+    );
+  
+    if (!validatedFields.success) {
+      return {
+        Error: validatedFields.error.flatten().fieldErrors,
+      };
+    }
+  
+    try {
+      await prisma.patologi.create({
+        data: {
+          nama: validatedFields.data.nama,
+          deskripsi: validatedFields.data.deskripsi,
+          foto: validatedFields.data.foto,
+        },
+      });
+      console.log(validatedFields.data)
+  
+      return {
+        message: "Data berhasil ditambahkan!",
+      };
+    } catch (error) {
+      console.error("Database error:", error);
+      return {
+        message: "Gagal untuk menambahkan data",
+      };
+    }
+  };
