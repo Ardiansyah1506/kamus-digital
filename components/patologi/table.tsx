@@ -25,7 +25,7 @@ const truncateHtmlText = ({text, maxLength}:{text:string,maxLength:number}) => {
   };
   
   // Function to strip HTML tags from a string
-  const stripHtmlTags = (text) => {
+  const stripHtmlTags = (text:string) => {
     return text.replace(/<\/?[^>]+(>|$)/g, ""); // Removes HTML tags using regex
   };
   
