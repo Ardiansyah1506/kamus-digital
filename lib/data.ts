@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 const ITEMS_PER_PAGE = 5;
 
-export const getData = async (query: string, currentPage: number,kategori:string) => {
+export const getDataTerminologi = async (query: string, currentPage: number,kategori:string) => {
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   
     try {
@@ -87,4 +87,55 @@ export const getData = async (query: string, currentPage: number,kategori:string
   };
   
 
-
+    export const getDataPatologi = async (query: string, currentPage: number) => {
+    
+      try {
+        // Fetch terminologies based on the conditions
+        const data = await prisma.patologi.findMany({
+          where: {
+            OR: [
+              {
+                nama: {
+                  contains: query,
+                  mode: "insensitive", // Case-insensitive search for 'nama'
+                },
+              },
+              {
+                foto: {
+                  contains: query,
+                  mode: "insensitive", // Case-insensitive search for 'arti'
+                },
+              },
+              {
+                deskripsi: {
+                  contains: query,
+                  mode: "insensitive", // Case-insensitive search for 'arti'
+                },
+              },
+            ],
+          },
+          orderBy: {
+            createdAt: 'desc', // Optional: Order by creation date, adjust as needed
+          },
+        });
+      
+      return data;
+      } catch (error) {
+        console.error('Error fetching terminologies:', error);
+      }
+      
+    };
+    export const getDataPatologiById = async (id: string) => {
+      try {
+        // Fetch the single patologi item based on its ID
+        const patologi = await prisma.patologi.findUnique({
+          where: { id: id }, // Match the item by its unique ID
+        });
+    
+        // Return the found patologi item or null if not found
+        return patologi;
+      } catch (error) {
+        console.error('Error fetching patologi by ID:', error);
+        return null;
+      }
+    };

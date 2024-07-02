@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three-stdlib';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
-const Model = () => {
+const Models = ({name}:{name:string}) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState(true); // State untuk mengelola status loading
 
@@ -45,7 +45,7 @@ const Model = () => {
     // Load GLTF model
     const loader = new GLTFLoader();
     loader.load(
-      '/7_MODEL_KERANGKA.glb', // Ensure your model is in the public folder and named correctly
+      `../${name}`, // Ensure your model is in the public folder and named correctly
       (gltf) => {
         scene.add(gltf.scene);
         setLoading(false); // Model selesai di-load, set status loading ke false
@@ -88,7 +88,7 @@ const Model = () => {
   }, []);
 
   return (
-    <div ref={mountRef} style={{ width: '100%', height: '80vh', position: 'relative' }}>
+    <div ref={mountRef} style={{ width: '100%', height: '50vh', position: 'relative' }}>
       {loading && (
         <div
         className="mx-auto w-[500px] bg-gray-950 rounded-xl overflow-hidden drop-shadow-xl"
@@ -115,4 +115,4 @@ const Model = () => {
   );
 };
 
-export default Model;
+export default Models;

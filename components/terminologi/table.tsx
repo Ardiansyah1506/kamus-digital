@@ -1,10 +1,10 @@
-import {getData, getDataPages } from "@/lib/data";
+import {getDataTerminologi, getDataPages } from "@/lib/data";
 import { IoIosArrowRoundDown } from "react-icons/io"
 import Pagination from "../pagination";
 
 
 export const Table = async ({query,currentPage,kategori}:{query:string,currentPage:number,kategori:string}) => {
-    const data = await getData(query,currentPage,kategori);
+    const data = await getDataTerminologi(query,currentPage,kategori);
     const totalPages =await getDataPages(query,kategori)
 
     return (
