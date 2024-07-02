@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from 'react';
 import { getDataPatologi } from '@/lib/data'; // Ensure the correct path to your data fetching function
 import { IoIosArrowRoundForward } from 'react-icons/io';
